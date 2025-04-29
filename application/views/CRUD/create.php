@@ -2,10 +2,10 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <div class="card" style="width: 100%; border-color: transparent;">
-                
                 <div class="card-body">
                     <h2><img src="https://github.com/fluidicon.png" class="card-img-top" alt="..." style="width:11%;"> <?php echo $title; ?></h2>
                     <form id="frmInputs" style="margin-top: 3em;">
+                        <?php echo validation_errors(); ?>
                         <div class="form-floating">
                             <input type="text" class="form-control" name="txtnmFirstname" id="inputnmFirstname" placeholder="First Name">
                             <label for="inputnmFirstname">First Name</label>
@@ -41,8 +41,7 @@
                     dataType:'json',
                     success:function(response){
                         if(response.success){
-                            $(".form-control").val("");
-                            $("#inputnmFirstname").focus();
+                            alert("Saved");
                         }
                     }
                 })

@@ -5,14 +5,16 @@
             $this->load->database();
         }
 
-        function insert_m($values){
-            $this->db->insert("tbluser",$values);
+        function insert_m(){
+            $this->load->helper('url');
 
-            if($this->db->affected_rows()>0){
-                return true;
-            }else{
-                return false;
-            }
+            $values = array(
+                'firstname' => $this->input->post("txtnmFirstname"),
+                'lastname' => $this->input->post("txtnmLastname"),
+                'accountstatus' => $this->input->post("txtnmStatus")
+            );
+
+            return $this->db->insert("tbluser",$values);
         }
     }
     
