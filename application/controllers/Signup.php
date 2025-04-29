@@ -4,8 +4,6 @@
         function __construct(){
             parent::__construct();
             $this->load->model("signup_m");
-            $this->load->helper('form');
-            $this->load->library('form_validation');
         }
 
         function index(){
@@ -18,23 +16,20 @@
         }
 
         function insert_c(){
+            $data["success"] = false;
 
-            $this->form_validation->set_rules('txtnmFirstname','Firstname','required');
-            $this->form_validation->set_rules('txtnmLastname','Lastname','required');
-            $this->form_validation->set_rules('txtnmStatus','Account Status','required');
+            $values = array(
+                'firstname' => $this->input->post("txtnmFirstname"),
+                'lastname' => $this->input->post("txtnmLastname"),
+                'accountstatus' => $this->input->post("txtnmStatus")
+            );
 
-            if($this->form_validation->run() === FALSE){
-                $data["title"] = 'Create';
+            $response = $this->signup_m->insert_m($values);
 
-                $this->load->view("common/aheader",$data);
-                $this->load->view("common/bcss");
-                $this->load->view("CRUD/create");
-                $this->load->view("common/cfooter");
-            }else{
-                $this->signup_m->insert_m();
-                $data["title"] = 'Create';
-
+            if($response){
+                $data["success"] = true;
             }
+            echo json_encode($data);
         }
     }
     
