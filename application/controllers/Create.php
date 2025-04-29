@@ -1,9 +1,9 @@
 <?php
-    class Signup extends CI_Controller {
+    class Create extends CI_Controller {
 
         function __construct(){
             parent::__construct();
-            $this->load->model("signup_m");
+            $this->load->model("create_m");
         }
 
         function index(){
@@ -24,7 +24,7 @@
                 'accountstatus' => $this->input->post("txtnmStatus")
             );
 
-            $response = $this->signup_m->insert_m($values);
+            $response = $this->create_m->insert_m($values);
 
             if($response){
                 $data["success"] = true;

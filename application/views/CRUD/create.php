@@ -45,7 +45,7 @@
                 $.ajax({
                     type:'ajax',
                     method:'POST',
-                    url:'Signup/insert_c',
+                    url:'Create/insert_c',
                     data:$("#frmInputs").serialize(),
                     dataType:'json',
                     success:function(response){

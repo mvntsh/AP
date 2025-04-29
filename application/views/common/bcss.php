@@ -2,6 +2,9 @@
         @media screen{
             body{
                 overflow-x: hidden;
+                font-family: "Quicksand", sans-serif;
+                font-optical-sizing: auto;
+                font-style: normal;
             }
 
             .form-floating{
@@ -10,6 +13,7 @@
 
             .btn{
                 border-radius: 0px;
+                font-size: 13pt;
             }
 
             .btn:hover{
