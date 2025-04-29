@@ -52,7 +52,7 @@
                         if(response.success){
                             $("#btnAlert").click();
                             $(".toast-body").text("Saved");
-                            location.reload();
+                            $(".form-control").val("");
                         }
                     }
                 })
