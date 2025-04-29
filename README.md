@@ -1,2 +1,2 @@
-# activityPortal
-My Projects Restored here
+# ActivityPortal
+ Restored activities
