@@ -1,5 +1,9 @@
     <style type="text/css">
         @media screen{
+            body{
+                overflow-x: hidden;
+            }
+
             .form-floating{
                 margin-bottom: .5em;
             }

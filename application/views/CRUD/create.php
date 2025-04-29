@@ -26,6 +26,7 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function(){
+            $("#inputnmFirstname").focus();
 
             $("#btnSave").click(function(e){
                 e.preventDefault()
@@ -33,7 +34,8 @@
                 var inputnmLastname = $("#inputnmLastname").val();
 
                 if(inputnmFirstname==("")>0||inputnmLastname==("")>0){
-                    alert("Please input empty field.");
+                    $("#btnToast").click();
+                    $(".toast-body").text("Please input empty field.");
                 }else{
                     insert_v();
                 }
@@ -48,7 +50,8 @@
                     dataType:'json',
                     success:function(response){
                         if(response.success){
-                            alert("Saved");
+                            $("#btnAlert").click();
+                            $(".toast-body").text("Saved");
                             location.reload();
                         }
                     }
