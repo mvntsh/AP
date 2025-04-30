@@ -6,17 +6,17 @@
             }
 
             function index(){
-                $data["title"] = 'Read';
+                $data["title"] = 'Order';
                 $this->load->view("common/aheader",$data);
                 $this->load->view("common/bcss");
                 $this->load->view("CRUD/read");
                 $this->load->view("common/cfooter");
             }
 
-            function viewUser_c(){
+            function viewProduct_c(){
                 $data["success"] = false;
 
-                $data["data"] = $this->read_m->viewUser_m();
+                $data["data"] = $this->read_m->viewProduct_m();
 
                 if(count($data["data"])>0){
                     $data["success"] = true;
@@ -27,9 +27,9 @@
             function getData_c(){
                 $data["success"] = false;
 
-                $userid = $this->input->post("txtnmUserid");
+                $product_id = $this->input->post("txtnmProductid");
 
-                $data["data"] = $this->read_m->getData_m($userid);
+                $data["data"] = $this->read_m->getData_m($product_id);
 
                 if(count($data["data"])>0){
                     $data["success"] = true;

@@ -6,7 +6,7 @@
         }
 
         function insert_m($values){
-            $this->db->insert("tbluser",$values);
+            $this->db->insert("tblproduct",$values);
 
             if($this->db->affected_rows()>0){
                 return true;

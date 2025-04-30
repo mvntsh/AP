@@ -19,9 +19,9 @@
             $data["success"] = false;
 
             $values = array(
-                'firstname' => $this->input->post("txtnmFirstname"),
-                'lastname' => $this->input->post("txtnmLastname"),
-                'accountstatus' => $this->input->post("txtnmStatus")
+                'productname' => $this->input->post("txtnmProductname"),
+                'productprice' => $this->input->post("txtnmProductprice"),
+                'productstatus' => $this->input->post("txtnmProductstatus")
             );
 
             $response = $this->create_m->insert_m($values);
