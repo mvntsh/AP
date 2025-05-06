@@ -45,7 +45,6 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <div id="divConfirm"></div>
         </div>
         </div>
     </div>
@@ -149,7 +148,8 @@
 
             $(document).on("click","#btnPurchase",function(e){
                 e.preventDefault();
-                getOrder_v();
+                tallyOrder_c();
+                // getOrder_v();
             })
 
             function getOrder_v(){
