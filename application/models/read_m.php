@@ -44,26 +44,6 @@
                 }
             }
 
-            function getOrderid_m(){
-                $query = $this->db->query("SELECT * FROM `tblorders`")->result_array();
-
-                if(count($query)>0){
-                    return $query;
-                }else{
-                    return array();
-                }
-            }
-
-            function tallyOrder_m($order_id){
-                $query = $this->db->query("SELECT *,COALESCE(FORMAT(REPLACE(productprice * quantity,',',''),2),'') AS ordertally FROM `tblproduct` INNER JOIN `tblorders` ON tblproduct.product_id=tblorders.product_id WHERE order_id='$order_id';")->result_array();
-
-                if(count($query)>0){
-                    return $query;
-                }else{
-                    return array();
-                }
-            }
-
             function myOrder_m(){
                 $query = $this->db->query("SELECT productname,quantity,productprice,COALESCE(FORMAT(REPLACE(productprice * quantity,',',''),2),'') AS ordertally FROM `tblproduct` INNER JOIN `tblorders` ON tblproduct.product_id=tblorders.product_id WHERE machineno='1' AND orderstatus='Set' ORDER BY order_id ASC;")->result_array();
 

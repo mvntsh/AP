@@ -22,7 +22,8 @@
         <input type="text" name="txtnmMachine" id="inputnmMachine" value="1" placeholder="Machine No.">
         <input type="text" name="txtnmOrderstatus" id="inputnmOrderstatus" placeholder="Order Status">
         <input type="text" name="txtnmPrice" id="inputnmPrice" placeholder="Price">
-        <input type="text" name="txtnmPno" id="inputnmPno" value="4" placeholder="Priority">
+        <input type="text" name="txtnmOrdertally" id="inputnmOrdertally" placeholder="Order Tally">
+        <input type="text" name="txtnmPno" id="inputnmPno" placeholder="Priority">
         <input type="text" name="txtnmOrderid" id="inputnmOrderid" placeholder="Orderid">
         <div id="divOrder"></div>
     </form>
@@ -44,7 +45,7 @@
             <div id="divModal"></div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Confirm</button>
         </div>
         </div>
     </div>
@@ -140,16 +141,19 @@
                             $("#divModal").html(div);
                             $("#inputnmQuantity").val("1");
                             $("#btnOpen").click();
-                            tallyOrder_c();
                         }
                     }
                 })
             }
 
-            $(document).on("click","#btnPurchase",function(e){
-                e.preventDefault();
-                tallyOrder_c();
-                // getOrder_v();
+            $(document).on("click","#btnPurchase",function(){
+                var inputnmPrice = $("#inputnmPrice").val();
+                var inputnmQuantity = $("#inputnmQuantity").val();
+
+                product = inputnmQuantity * inputnmPrice;
+                $("#inputnmOrdertally").val(product);
+                $("#inputnmPno").val("4");
+                getOrder_v();
             })
 
             function getOrder_v(){
@@ -157,43 +161,15 @@
                     type:'ajax',
                     method:'POST',
                     url:'Read/getOrder_c',
-                    data:$("#inputnmProductid,#inputnmMachine,#inputnmPrice,#inputnmQuantity,#inputnmOrderstatus").serialize(),
+                    data:$("#inputnmProductid,#inputnmMachine,#inputnmPrice,#inputnmQuantity,#inputnmOrdertally,#inputnmOrderstatus,#inputnmPno").serialize(),
                     dataType:'json',
                     success:function(response){
                         if(response.success){
-                            
+                            $("#inputnmPrice,#inputnmQuantity,#inputnmOrdertally").val("");
                         }
                     }
                 })
             }
-
-            function tallyOrder_c(){
-                $.ajax({
-                    type:'ajax',
-                    method:'POST',
-                    url:'Read/tallyOrder_c',
-                    dataType:'json',
-                    success:function(response){
-                        if(response.success){
-                            var div = '';
-
-                            response.data.forEach(function(sql){
-                                div += `
-                                    <button data-orderid="${sql['order_id']}" id="getOrderid">Confirm</button>
-                                `;
-                            })
-                            $("#divConfirm").html(div);
-                            $("#inputnmPrice,#inputnmQuantity").val("");
-                        }
-                    }
-                })
-            }
-
-            $(document).on("click","#getOrderid",function(e){
-                e.preventDefault();
-                $("#inputnmOrderid").val($(this).attr("data-orderid"));
-                alert(inputnmOrderid);
-            })
             
             $("#btnMyorder").click(function(e){
                 e.preventDefault();

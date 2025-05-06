@@ -43,6 +43,7 @@
                 $values = array(
                     "product_id" => $this->input->post("txtnmProductid"),
                     "quantity" => $this->input->post("txtnmQuantity"),
+                    "ordertally" => $this->input->post("txtnmOrdertally"),
                     "machineno" => $this->input->post("txtnmMachine"),
                     "orderstatus" => $this->input->post("txtnmOrderstatus"),
                     "priorityno" => $this->input->post("txtnmPno")
@@ -60,30 +61,6 @@
                 $data["success"] = false;
 
                 $data["data"] = $this->read_m->getOrderid_m();
-
-                if(count($data["data"])>0){
-                    $data["success"] = true;
-                }
-                echo json_encode($data);
-            }
-
-            function tallyOrder_c(){
-                $data["success"] = false;
-
-                $order_id = $this->input->post("");
-
-                $data["data"] = $this->read_m->tallyOrder_m($order_id);
-
-                if(count($data["data"])>0){
-                    $data["success"] = true;
-                }
-                echo json_encode($data);
-            }
-
-            function myOrder_c(){
-                $data["success"] = false;
-
-                $data["data"] = $this->read_m->myOrder_m();
 
                 if(count($data["data"])>0){
                     $data["success"] = true;
