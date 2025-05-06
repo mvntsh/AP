@@ -36,6 +36,24 @@
                 }
                 echo json_encode($data);
             }
+
+            function getOrder_c(){
+                $data["success"] = false;
+
+                $values = array(
+                    "product_id" => $this->input->post("txtnmProductid"),
+                    "quantity" => $this->input->post("txtnmQuantity"),
+                    "orderstatus" => $this->input->post("txtnmOrderstatus"),
+                    "machineno" => $this->input->post("txtnmMachine")
+                );
+
+                $response = $this->read_m->getOrder_m($values);
+
+                if($response){
+                    $data["success"] = true;
+                }
+                echo json_encode($data);
+            }
         }
         
     ?>
