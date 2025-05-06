@@ -45,7 +45,7 @@
                     "quantity" => $this->input->post("txtnmQuantity"),
                     "machineno" => $this->input->post("txtnmMachine"),
                     "orderstatus" => $this->input->post("txtnmOrderstatus"),
-                    "priorityno" => $this->input->post("txtnmMachine"),
+                    "priorityno" => $this->input->post("txtnmPno")
                 );
 
                 $response = $this->read_m->getOrder_m($values);
